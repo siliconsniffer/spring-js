@@ -12,9 +12,10 @@ window.onload = function () {
         let getImageListe = document.getElementById("ImageListe")
         obj.images.forEach((item)=>{
           var node = document.createElement('li');
-          node.appendChild(document.createTextNode('Test'))
-          getImageListe.appendChild(node)
-          node.innerText = item;
+          var img = node.appendChild(document.createElement('img'))
+          img.src = 'http://localhost:9000/api/images'
+          getImageListe.appendChild(img);
+          node.innerHTML = item;
         })
       }
     )

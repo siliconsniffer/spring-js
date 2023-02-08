@@ -1,4 +1,5 @@
 import "./style.css";
+import "bootstrap/js/src/button";
 
 window.onload = function () {
   //console.log(Response())
@@ -9,15 +10,24 @@ window.onload = function () {
       jsonresponse.then(obj=>{
         console.log(obj)
 
-        let getImageListe = document.getElementById("ImageListe")
+        function removeAllChildNodes(parent) {
+          while (parent.firstChild) {
+            parent.removeChild(parent.firstChild);
+          }
+        }
+
+        document.getElementById("RefreshBtn").onclick = function imageRefresh() {
+          let getImageListe = document.getElementById("ImageListe")
+          removeAllChildNodes(getImageListe)
         obj.images.forEach((item)=>{
-          var node = document.createElement('li');
-          var img = node.appendChild(document.createElement('img'))
+          let node = document.createElement('li');
+          let img = node.appendChild(document.createElement('img'))
           img.src = 'http://localhost:9000/api/images'
-          getImageListe.appendChild(img);
-          node.innerHTML = item;
-        })
-      }
+              getImageListe.appendChild(img);
+              node.innerHTML = item;
+            }
+          )
+        }}
     )
   })
 }

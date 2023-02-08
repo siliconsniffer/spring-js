@@ -19,15 +19,16 @@ window.onload = function () {
         document.getElementById("RefreshBtn").onclick = function imageRefresh() {
           let getImageListe = document.getElementById("ImageListe")
           removeAllChildNodes(getImageListe)
-        obj.images.forEach((item)=>{
-          let node = document.createElement('li');
-          let img = node.appendChild(document.createElement('img'))
-          img.src = 'http://localhost:9000/api/images'
-              getImageListe.appendChild(img);
-              node.innerHTML = item;
-            }
-          )
-        }}
+
+          for(let i=0;i<obj.images.length;i++){
+            let item = obj.images[i]
+            let node = document.createElement('li');
+            let img = node.appendChild(document.createElement('img'))
+            img.src = 'http://localhost:9000/api/data/images?image=' + item
+            getImageListe.appendChild(img);
+          }
+        }
+      }
     )
   })
 }

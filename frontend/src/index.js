@@ -1,5 +1,7 @@
-import "./style.css";
+import 'bootstrap/dist/css/bootstrap.min.css';
+import './style.css';
 import "bootstrap/js/src/button";
+import bootstap from "bootstrap"
 
 window.onload = function () {
   //console.log(Response())
@@ -16,19 +18,23 @@ window.onload = function () {
           }
         }
 
-        document.getElementById("RefreshBtn").onclick = function imageRefresh() {
-          let getImageListe = document.getElementById("ImageListe")
-          removeAllChildNodes(getImageListe)
+        let container = document.getElementById("container")
+        removeAllChildNodes(container)
 
-          for(let i=0;i<obj.images.length;i++){
-            let item = obj.images[i]
-            let node = document.createElement('li');
-            let img = node.appendChild(document.createElement('img'))
-            img.src = 'http://localhost:9000/api/data/images?image=' + item
-            getImageListe.appendChild(img);
-          }
+        for(let i=0;i<obj.images.length;i++){
+          let item = obj.images[i]
+          let node = document.createElement('div');
+          node.className="flex-box"
+          let img = node.appendChild(document.createElement('img'))
+          img.className="image"
+          img.src = 'http://localhost:9000/api/data/images?image=' + item
+          container.appendChild(node);
         }
       }
     )
   })
+}
+
+window.refresh = function () {
+  onload()
 }

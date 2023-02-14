@@ -1,7 +1,6 @@
 import 'bootstrap/dist/css/bootstrap.min.css';
 import './style.css';
 import "bootstrap/js/src/button";
-import bootstap from "bootstrap"
 
 window.onload = function () {
   //console.log(Response())
@@ -18,6 +17,9 @@ window.onload = function () {
           }
         }
 
+
+
+
         let container = document.getElementById("container")
         removeAllChildNodes(container)
 
@@ -29,12 +31,43 @@ window.onload = function () {
           img.className="image"
           img.src = 'http://localhost:9000/api/data/images?image=' + item
           container.appendChild(node);
+
+
         }
       }
     )
   })
 }
+window.Login = function () {
+  let password = document.getElementById('password').value
+  let email = document.getElementById('email').value
 
+  let userData = {
+    email : email,
+    password : password
+  }
+
+  fetch('/api/user/login',{
+    method: 'POST',
+    headers: {
+      'Content-Type': 'application/json'
+    },
+    body: JSON.stringify(userData)
+  })
+      .then(response => {
+
+
+        console.log(response)
+        if (response.status===200){
+          window.alert("Login successful")
+        }
+        else {
+          window.alert("Login failed.")
+        }
+      })
+      .then(data => console.log(data))
+      .catch(error => console.error(error));
+}
 window.refresh = function () {
   onload()
 }

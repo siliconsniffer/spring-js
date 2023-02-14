@@ -6,15 +6,11 @@ import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.boot.autoconfigure.security.servlet.SecurityAutoConfiguration;
 
-import java.util.ArrayList;
-import java.util.Arrays;
-import java.util.List;
-
 @SpringBootApplication(exclude={SecurityAutoConfiguration.class})
 public class DemoApplication implements CommandLineRunner {
 
 	@Autowired
-	private CustomerRepository repository;
+	private UserRepository repository;
 
 	public static void main(String[] args) {
 		SpringApplication.run(DemoApplication.class, args);
@@ -26,16 +22,15 @@ public class DemoApplication implements CommandLineRunner {
 		//Demonstrationscode
 		repository.deleteAll();
 
-		repository.save(new Customer("Alice", "Test"));
-		repository.save(new Customer("Bob","Andrew"));
-		repository.save(new Customer("Lukas","Hagenauer"));
+		repository.save(new User("test@gmx.de", "Test123"));
+		repository.save(new User("Bob","Andrew"));
+		repository.save(new User("Lukas","Hagenauer"));
 
-		for (Customer customer : repository.findAll()){
-			System.out.println(customer);
+		for (User user : repository.findAll()){
+			System.out.println(user);
 		}
 
-		Customer gefundenerUser = repository.findByFirstName("Alice");
-		System.out.println("");
+		User gefundenerUser = repository.findByUserName("Alice");
 		System.out.println(gefundenerUser);
 
 

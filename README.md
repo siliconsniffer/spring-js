@@ -16,3 +16,10 @@ Frontend Ordern
 - Key in Gi tkopieren
 - sudo apt install git
 - git commands
+
+- [] Anmelde Form über Bootstrap
+- [] Suchleiste
+- [] Upload Funktion
+- [] Suchleiste + Backend für Suche
+- [] Kommentare zu Code hinzufügen
+- [] README.md

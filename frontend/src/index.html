@@ -1,19 +1,32 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-  <meta charset="utf-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>My First Page</title>
-  <link rel="icon" type="image/png" href="assets/icons8-solarpaneel-64.png">
-</head>
-<body>
-  <h1>Hello World!</h1>
-  <ul id="ImageListe">
-    <li><img src="../../backend/src/main/resources/images/elefant.avif" alt="elefant" width="50%"></li>
-  </ul>
-  <! Button to refresh the Image Board. >
-  <button id="RefreshBtn" type="button" onclick="imageRefresh()"> refresh </button>
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>LibreGram</title>
+    <link rel="icon" type="image/png" href="assets/icons8-solarpaneel-64.png">
+  </head>
+  <body>
+  <div class="navbar">
+      <a class="navbar-brand" href="/">Test</a>
+      <form>
+          <input class="search-input" type="search" placeholder="Search" aria-label="Search">
+          <button class="search-submit" type="submit">Search</button>
+      </form>
+      <div>
+          <button id="RefreshBtn" type="button" class="refresh-btn" onclick="refresh()"> refresh </button>
+      </div>
+  </div>
 
-</body>
 
+    <!-- Button to refresh the Image Board. -->
+
+  <div id="container" class="container">
+    <div class="flex-box">
+    </div>
+  </div>
+
+  </body>
 </html>
+
+

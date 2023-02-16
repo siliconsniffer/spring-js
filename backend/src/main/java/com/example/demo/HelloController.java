@@ -1,9 +1,11 @@
 package com.example.demo;
 
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.RequestParam;
-import org.springframework.web.bind.annotation.ResponseBody;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.HttpStatus;
+import org.springframework.http.MediaType;
+import org.springframework.http.ResponseEntity;
+import org.springframework.web.bind.annotation.*;
+import org.springframework.web.server.ResponseStatusException;
 
 import java.io.IOException;
 import java.nio.file.Files;
@@ -27,5 +29,32 @@ public class HelloController {
         return data;
     }
 
+
+    @Autowired
+    private UserRepository repository;
+    @PostMapping(
+            path = "/api/user/login",
+            consumes = {MediaType.APPLICATION_JSON_VALUE})
+    public ResponseEntity handleBrowserSubmissions(@RequestBody UserDTO userData) throws Exception {
+
+        /*System.out.println("Vorm Erstellen");
+        UserDTO user = new UserDTO("test@gmx.de", "Test123");
+        System.out.println(user);*/
+
+
+        System.out.println(userData);
+        User user = repository.findByUserName(userData.getEmail());
+        if( user.password.equals(userData.getPassword())) {
+            return new ResponseEntity<>(HttpStatus.OK);
+        }
+        else {
+            throw new ResponseStatusException(HttpStatus.FORBIDDEN);
+        }
+    }
+
+    @GetMapping("")
+    public ResponseEntity<String> getSuccess() {
+        return new ResponseEntity<String>("Login successful.", HttpStatus.OK);
+    }
 }
 

@@ -36,8 +36,10 @@
 }
 
 .button, .refresh-button{
-    width: 75px;
+    display: inline-block;
+    text-align: center;
     height: 35px;
+    padding: 0 10px;
     margin-right: 10px;
     border-radius: 3px;
     border: 1px ;
@@ -58,25 +60,38 @@
     text-align: left;
     padding-left: 10px;
 }
+.top{
+    width: 100%;
+    display: flex;
+    justify-content: space-between
+}
+.lower{
+    width: auto;
+    display: flex;
+    justify-content: flex-end;
+    align-items: baseline;
+}
 
 @media screen and (min-width: 600px) {
     body{
         background-color: aliceblue;
     }
+
+    .navbar{
+        flex-direction: row;
+        flex-wrap: nowrap;
+    }
+
 }
 @media screen and (max-width: 599px) {
     body {
         background-color: #373737;
     }
-    .navbar{
-        display: flex;
-        flex-direction: column;
-        flex-wrap: nowrap;
-    }
-    .refresh-button{
-        display: flex;
-        flex-direction: row;
-        justify-content: flex-end;
-    }
 
+    .navbar{
+        flex-wrap: wrap;
+    }
+    .search-input{
+        width: 100%;
+    }
 }

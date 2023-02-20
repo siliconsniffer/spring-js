@@ -18,8 +18,9 @@ Frontend Ordern
 - git commands
 
 - [ ] Anmelde Form über Bootstrap
-- [ ] Suchleiste
 - [ ] Upload Funktion
 - [ ] Suchleiste + Backend für Suche
+- [ ] Like Button
+- [ ] Bilder in Datenbank, API um Bilder zu skalieren, dann direkt laden
 - [ ] Kommentare zu Code hinzufügen
 - [ ] README.md

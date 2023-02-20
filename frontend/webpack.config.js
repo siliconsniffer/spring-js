@@ -20,7 +20,13 @@ module.exports = {
     plugins: [
         new HtmlWebpackPlugin({
             template: './src/index.html',
-            filename:'./index.html'
+            filename:'./index.html',
+            chunks:["main"]
+        }),
+        new HtmlWebpackPlugin({
+            template: './src/test.html',
+            filename:'./test.html',
+            chunks:["test"]
         }),
         new CopyPlugin({
             patterns: [

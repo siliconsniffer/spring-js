@@ -13,6 +13,9 @@
                 <!-- Button to refresh the Image Board. -->
                 <button id="RefreshBtn" type="button" class="button" onclick="refresh()"> refresh </button>
                 <button id="Login" type="button" onclick="location.href = 'http://localhost:9000/login'" class="button">Log/Sign-In</button>
+                <!-- <button id="Upload" type="file" onclick="upload()" class="button">Upload</button> -->
+
+
             </div>
             <form class="lower">
                 <input type="search" class="search-input" placeholder="Search" aria-label="Search">
@@ -22,5 +25,16 @@
         <div id="container" class="container">
             <div class="flex-box"></div>
         </div>
+        <form method="POST" action="/api/uploadFile" enctype="multipart/form-data">
+            <table>
+                <tr>
+                    <td><label path="file">Select a file to upload</label></td>
+                    <td><input type="file" name="file" /></td>
+                </tr>
+                <tr>
+                    <td><input type="submit" value="Submit" /></td>
+                </tr>
+            </table>
+            </form>
     </body>
 </html>

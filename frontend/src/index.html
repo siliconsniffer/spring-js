@@ -6,17 +6,20 @@
     <title>LibreGram</title>
     <link rel="icon" type="image/png" href="assets/icons8-solarpaneel-64.png">
   </head>
+
   <body>
-  <div class="navbar">
+  <nav class="navbar">
       <a class="navbar-brand" href="/">Test</a>
-      <form>
-          <input class="search-input" type="search" placeholder="Search" aria-label="Search">
-          <button class="search-submit" type="submit">Search</button>
-      </form>
       <div>
-          <button id="RefreshBtn" type="button" class="refresh-btn" onclick="refresh()"> refresh </button>
+          <button id="RefreshBtn" type="button" class="refresh-button" onclick="refresh()"> refresh </button>
       </div>
-  </div>
+
+      <form class="search">
+          <input class="search-input" type="search" placeholder="Search" aria-label="Search">
+          <button class="button" type="submit">Search</button>
+      </form>
+
+  </nav>
 
 
     <!-- Button to refresh the Image Board. -->

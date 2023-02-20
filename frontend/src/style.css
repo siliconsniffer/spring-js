@@ -12,7 +12,6 @@
     margin-top: 5px;
 
 }
-
 .image {
    max-width: 100%;
     max-height: 100%;
@@ -29,14 +28,26 @@
 .navbar-brand:hover {
     color: darkgrey;
 }
-.navbar {
+.navbar{
     display: flex;
     justify-content: flex-end;
     width: 100%;
     background-color: #3e3e3e;
 }
 
-.search-input {
+.button, .refresh-button{
+    width: 75px;
+    height: 35px;
+    margin-right: 10px;
+    border-radius: 3px;
+    border: 1px ;
+    background-color: #373737;
+    color: aliceblue;
+}
+.button:hover{
+    color: darkgrey;
+}
+.search-input{
     margin: 5px;
     width: 250px;
     height: 35px;
@@ -48,29 +59,24 @@
     padding-left: 10px;
 }
 
-.search-submit {
-    width: 75px;
-    height: 35px;
-    margin-right: 10px;
-    border-radius: 3px;
-    background-color: #373737;
-    border: 1px ;
-    color: aliceblue;
+@media screen and (min-width: 600px) {
+    body{
+        background-color: aliceblue;
+    }
 }
+@media screen and (max-width: 599px) {
+    body {
+        background-color: #373737;
+    }
+    .navbar{
+        display: flex;
+        flex-direction: column;
+        flex-wrap: nowrap;
+    }
+    .refresh-button{
+        display: flex;
+        flex-direction: row;
+        justify-content: flex-end;
+    }
 
-.search-submit:hover {
-    color: darkgrey;
-}
-
-.refresh-btn {
-    width: 75px;
-    height: 35px;
-    margin-right: 10px;
-    border-radius: 3px;
-    border: 1px ;
-    background-color: #373737;
-    color: aliceblue;
-}
-.refresh-btn:hover {
-    color: darkgrey;
 }

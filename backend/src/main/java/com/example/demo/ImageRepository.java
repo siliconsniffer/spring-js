@@ -11,5 +11,4 @@ import javax.naming.Name;
 public interface ImageRepository extends MongoRepository<Image, String> {
 
     public Name findByName(String Name);
-
 }

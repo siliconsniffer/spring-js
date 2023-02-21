@@ -38,9 +38,9 @@ module.exports = {
       chunks:["main"]
     }),
     new HtmlWebpackPlugin({
-      template: './src/test.html',
-      filename:'./test.html',
-      chunks:["test"]
+      template: './src/login.html',
+      filename:'./login.html',
+      chunks:["login"]
     }),
     new CopyPlugin({
       patterns: [

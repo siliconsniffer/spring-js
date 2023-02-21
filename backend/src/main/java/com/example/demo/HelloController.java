@@ -20,7 +20,12 @@ public class HelloController {
 
     @GetMapping("api/images")
     public ImageResponse helloWorld(){
-        return new ImageResponse(2, new String[]{"elefant.avif", "tiger.jpg", "nashorn.jpg"});
+        System.out.println(imageRepository.toString());
+        String arr [] = new String[(int)imageRepository.count()];
+        for (int i=0; i<(int)imageRepository.count();i++){
+            arr[i] = imageRepository.findAll().get(i).getId() + "." + imageRepository.findAll().get(i).getFileformat();
+        }
+        return new ImageResponse(arr);
     }
 
 
@@ -34,6 +39,7 @@ public class HelloController {
 
     @Autowired
     private UserRepository repository;
+
     @PostMapping(
             path = "/api/user/login",
             consumes = {MediaType.APPLICATION_JSON_VALUE})
@@ -48,16 +54,22 @@ public class HelloController {
             throw new ResponseStatusException(HttpStatus.FORBIDDEN);
         }
     }
-
     @GetMapping("")
     public ResponseEntity<String> getSuccess() {
         return new ResponseEntity<String>("Login successful.", HttpStatus.OK);
     }
+    @Autowired
+    private ImageRepository imageRepository;
     @RequestMapping(value = "/api/uploadFile", method = RequestMethod.POST)
     public String submit(@RequestParam("file") MultipartFile uploadedFile, ModelMap modelMap) throws IOException {
         System.out.println("File uploaded");
         //modelMap.addAttribute("file", file);//
-        File file = new File("/home/linus/Downloads/Git/backend/src/main/resources/images/"+ uploadedFile.getOriginalFilename());
+
+        String[] filename = uploadedFile.getOriginalFilename().split("\\.");
+        String name = filename[0];
+        String fileformat = filename[1];
+        Image savedImage = imageRepository.save(new Image(name, fileformat));
+        File file = new File("/home/linus/Downloads/Git/backend/src/main/resources/images/"+ savedImage.getId() + "." + savedImage.getFileformat());
         try (OutputStream os = new FileOutputStream(file)) {
             os.write(uploadedFile.getBytes());
         }

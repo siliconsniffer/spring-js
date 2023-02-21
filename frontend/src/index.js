@@ -17,9 +17,6 @@ window.onload = function () {
           }
         }
 
-
-
-
         let container = document.getElementById("container")
         removeAllChildNodes(container)
 
@@ -31,8 +28,6 @@ window.onload = function () {
           img.className="image"
           img.src = 'http://localhost:9000/api/data/images?image=' + item
           container.appendChild(node);
-
-
         }
       }
     )

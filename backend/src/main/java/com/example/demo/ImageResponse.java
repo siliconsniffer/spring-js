@@ -1,16 +1,10 @@
 package com.example.demo;
 
 public class ImageResponse {
-    private int number;
+
     private String[] images;
 
-    public int getNumber() {
-        return number;
-    }
 
-    public void setNumber(int number) {
-        this.number = number;
-    }
 
     public String[] getImages() {
         return images;
@@ -20,8 +14,7 @@ public class ImageResponse {
         this.images = images;
     }
 
-    public ImageResponse(int number, String[] images) {
-        this.number = number;
+    public ImageResponse( String[] images) {
         this.images = images;
     }
 

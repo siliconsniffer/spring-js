@@ -1,25 +1,5 @@
-
-const htmlWebpackPlugin = require('html-webpack-plugin');
+const HtmlWebpackPlugin = require('html-webpack-plugin');
 const CopyPlugin = require("copy-webpack-plugin");
-const HtmlWebpackPlugin = require("html-webpack-plugin");
-
-const generateHtmlPlugin = (title) => {
-  return new htmlWebpackPlugin({
-    title,
-    filename: 'index.html',
-    template: `./src/pages/${title.toLowerCase()}/index.html`,
-  });
-}
-
-const populateHtmlPlugins = (pagesArray) => {
-  res = [];
-  pagesArray.forEach(page => {
-    res.push(generateHtmlPlugin(page));
-  })
-  return res;
-}
-
-const pages = populateHtmlPlugins(["main","login"]);
 
 module.exports = {
   module: {
@@ -41,7 +21,6 @@ module.exports = {
       options: {
         usePolling: false,
       },
-
     },
     proxy: [{
       context: ['/api/**'],
@@ -50,16 +29,22 @@ module.exports = {
     }]
   },
   mode: 'development',
+  entry: {
+    index: './src/index/index.js',
+    login: './src/login/login.js'
+  },
   plugins: [
   new HtmlWebpackPlugin({
-    template: './src/index.html',
-    filename:'./index.html',
-    chunks:["main"]
+    template: './src/index/index.html',
+    filename:'index.html',
+    inject:true,
+    chunks:['index']
   }),
   new HtmlWebpackPlugin({
-    template: './src/login.html',
-    filename:'./login.html',
-    chunks:["login"]
+    template: './src/login/login.html',
+    filename:'login.html',
+    inject:true,
+    chunks:['login']
   }),
   new CopyPlugin({
     patterns: [

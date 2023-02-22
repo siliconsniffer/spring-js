@@ -1,13 +1,14 @@
 package com.example.demo;
 
 public class UserDTO {
-    private String email;
+
+    private String userNameOrEmail;
     private String password;
 
     @Override
     public String toString() {
         return "UserDTO{" +
-                "email='" + email + '\'' +
+                "userNameOrEmail='" + userNameOrEmail + '\'' +
                 ", password='" + password + '\'' +
                 '}';
     }
@@ -16,12 +17,13 @@ public class UserDTO {
         System.out.println("constructor called");
 
     }
-    public String getEmail(){
-        return email;
+
+    public String getUserNameOrEmail() {
+        return userNameOrEmail;
     }
 
-    public void setEmail(String email) {
-        this.email = email;
+    public void setUserNameOrEmail(String userNameOrEmail) {
+        this.userNameOrEmail = userNameOrEmail;
     }
 
     public String getPassword(){
@@ -32,8 +34,8 @@ public class UserDTO {
         this.password = password;
     }
 
-    public UserDTO(String email, String password){
-        this.email = email;
+    public UserDTO(String userNameOrEmail, String password){
+        this.userNameOrEmail = userNameOrEmail;
         this.password = password;
         System.out.println("Constructor with param");
     }

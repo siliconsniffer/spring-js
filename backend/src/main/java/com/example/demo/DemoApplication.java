@@ -26,9 +26,9 @@ public class DemoApplication implements CommandLineRunner {
 		//Demonstrationscode
 		repository.deleteAll();
 
-		repository.save(new User("test@gmx.de", "Test123"));
-		repository.save(new User("Bob","Andrew"));
-		repository.save(new User("Lukas","Hagenauer"));
+		repository.save(new User("test@gmx.de", "Test", "Test123"));
+		repository.save(new User("Bob","Andrew", "???"));
+		repository.save(new User("Lukas","Hagenauer","Lukas123"));
 
 		imageRepository.deleteAll();
 		Image newImage = new Image("elefant", "avif");
@@ -43,10 +43,6 @@ public class DemoApplication implements CommandLineRunner {
 		for (Image image : imageRepository.findAll()){
 			System.out.println(image);
 		}
-
-		User gefundenerUser = repository.findByUserName("Alice");
-		System.out.println(gefundenerUser);
-
 
 	}
 }

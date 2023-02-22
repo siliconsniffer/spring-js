@@ -13,6 +13,7 @@ import java.io.*;
 import java.nio.file.Files;
 import java.nio.file.Path;
 import java.nio.file.Paths;
+import java.util.List;
 
 
 @RestController
@@ -21,9 +22,11 @@ public class HelloController {
     @GetMapping("api/images")
     public ImageResponse helloWorld(){
         System.out.println(imageRepository.toString());
-        String arr [] = new String[(int)imageRepository.count()];
-        for (int i=0; i<(int)imageRepository.count();i++){
-            arr[i] = imageRepository.findAll().get(i).getId() + "." + imageRepository.findAll().get(i).getFileformat();
+        long imageNumber = imageRepository.count();
+        String arr [] = new String[(int)imageNumber];
+        List<Image> allImages = imageRepository.findAll();
+        for (int i=0; i<imageNumber;i++){
+            arr[i] = allImages.get(i).getId() + "." + allImages.get(i).getFileformat();
         }
         return new ImageResponse(arr);
     }
@@ -46,7 +49,10 @@ public class HelloController {
     public ResponseEntity handleBrowserSubmissions(@RequestBody UserDTO userData) throws Exception {
 
         System.out.println(userData);
-        User user = repository.findByUserName(userData.getEmail());
+        User user = repository.findByUserName(userData.getUserNameOrEmail());
+        if (user == null) {
+            user = repository.findByEmail(userData.getUserNameOrEmail());
+        }
         if( user.password.equals(userData.getPassword())) {
             return new ResponseEntity<>(HttpStatus.OK);
         }
@@ -73,6 +79,6 @@ public class HelloController {
         try (OutputStream os = new FileOutputStream(file)) {
             os.write(uploadedFile.getBytes());
         }
-        return "fileUploadView";
+        return "File uploaded.";
     }
 }

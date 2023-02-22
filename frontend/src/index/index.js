@@ -1,13 +1,19 @@
 import 'bootstrap/dist/css/bootstrap.min.css';
 import '../style.css';
 import "bootstrap/js/src/button";
+import "../login/login.js"
 
 window.onload = function () {
   //console.log(Response())
-  fetchImages()
+    fetchImages()
+    localStorage.removeItem("user")
+
   let user = localStorage.getItem("user")
     if (user != null){
-
+        document.getElementById("Login").innerHTML = "Logout"
+    }
+    else if (user != null && document.getElementById("Login").onclick){
+        Logout()
     }
   //Button umbennen wenn user eingeloggt
 }

@@ -3,6 +3,7 @@ import '../style.css'
 import "bootstrap";
 
 window.Login = function () {
+    window.location.href = 'http://localhost:9000/login.html'
     let password = document.getElementById('password').value
     let email = document.getElementById('email').value
 
@@ -22,6 +23,7 @@ window.Login = function () {
             console.log(response)
             if (response.status===200){
                 window.alert("Login successful")
+                window.location.href = 'http://localhost:9000/'
                 localStorage.setItem('user', email)
             }
             else {
@@ -30,4 +32,8 @@ window.Login = function () {
         })
         .then(data => console.log(data))
         .catch(error => console.error(error));
+}
+window.Logout = function (){
+    localStorage.removeItem("user")
+    document.getElementById("Login").innerHTML = "Login"
 }

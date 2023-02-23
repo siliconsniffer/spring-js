@@ -23,7 +23,7 @@ public class HelloController {
     public ImageResponse helloWorld(){
         System.out.println(imageRepository.toString());
         long imageNumber = imageRepository.count();
-        String arr [] = new String[(int)imageNumber];
+        String arr [] = new String[(int )imageNumber];
         List<Image> allImages = imageRepository.findAll();
         for (int i=0; i<imageNumber;i++){
             arr[i] = allImages.get(i).getId() + "." + allImages.get(i).getFileformat();
@@ -46,20 +46,37 @@ public class HelloController {
     @PostMapping(
             path = "/api/user/login",
             consumes = {MediaType.APPLICATION_JSON_VALUE})
-    public ResponseEntity handleBrowserSubmissions(@RequestBody UserDTO userData) throws Exception {
+    public ResponseEntity login(@RequestBody UserDTO userData) throws Exception {
 
         System.out.println(userData);
         User user = repository.findByUserName(userData.getUserNameOrEmail());
         if (user == null) {
             user = repository.findByEmail(userData.getUserNameOrEmail());
         }
-        if( user.password.equals(userData.getPassword())) {
+        if( user.getPassword().equals(userData.getPassword())) {
             return new ResponseEntity<>(HttpStatus.OK);
         }
         else {
             throw new ResponseStatusException(HttpStatus.FORBIDDEN);
         }
     }
+
+    @PostMapping(
+            path = "/api/user/register",
+            consumes = {MediaType.APPLICATION_JSON_VALUE}
+    )
+    public ResponseEntity register(@RequestBody RegisterUserDTO userData) throws Exception {
+        User regUser = new User(userData.getEmail(), userData.getUserName(), userData.getPassword());
+        User userFoundByName = repository.findByUserName(regUser.getUserName());
+        User userFoundByEmail = repository.findByEmail(regUser.getEmail());
+        if (userFoundByName == null && userFoundByEmail == null) {
+            repository.save(regUser);
+            return new ResponseEntity<String>("Register successful.", HttpStatus.OK);
+        }
+        return new ResponseEntity<String>("Register failed, Username taken.", HttpStatus.FORBIDDEN);
+    }
+
+
     @GetMapping("")
     public ResponseEntity<String> getSuccess() {
         return new ResponseEntity<String>("Login successful.", HttpStatus.OK);

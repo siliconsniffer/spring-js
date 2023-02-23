@@ -31,7 +31,8 @@ module.exports = {
   mode: 'development',
   entry: {
     index: './src/index/index.js',
-    login: './src/login/login.js'
+    login: './src/login/login.js',
+    register: './src/register/register.js'
   },
   plugins: [
   new HtmlWebpackPlugin({
@@ -45,6 +46,12 @@ module.exports = {
     filename:'login.html',
     inject:true,
     chunks:['login']
+  }),
+  new HtmlWebpackPlugin({
+    template: './src/register/register.html',
+    filename:'register.html',
+    inject:true,
+    chunks:['register']
   }),
   new CopyPlugin({
     patterns: [

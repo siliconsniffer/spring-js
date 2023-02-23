@@ -1,22 +1,17 @@
 import 'bootstrap/dist/css/bootstrap.min.css';
 import '../style.css';
 import "bootstrap/js/src/button";
-import "../login/login.js"
 
 window.onload = function () {
   //console.log(Response())
     fetchImages()
-    localStorage.removeItem("user")
 
   let user = localStorage.getItem("user")
     if (user != null){
         document.getElementById("Login").innerHTML = "Logout"
+        document.getElementById("Login").setAttribute("onclick","logout()")
     }
-    else if (user != null && document.getElementById("Login").onclick){
-        Logout()
-    }
-  //Button umbennen wenn user eingeloggt
-}
+  }
 
 window.refresh = function () {
   fetchImages()
@@ -51,4 +46,10 @@ window.fetchImages = function (){
         }
     )
   })
+}
+window.logout = function (){
+    localStorage.removeItem("user")
+    document.getElementById("Login").innerHTML = "Login"
+    document.getElementById("Login").setAttribute("onclick","window.location.href='http://localhost:9000/login.html'")
+
 }

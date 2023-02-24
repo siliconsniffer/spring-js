@@ -18,6 +18,14 @@
     margin: auto;
 }
 
+.form{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+
+}
+
 .navbar-brand {
     margin-left: 10px;
     margin-right: auto;

@@ -19,10 +19,11 @@ Frontend Ordern
 - sudo apt install git
 - git commands
 
-- [ ] Anmelde Form über Bootstrap
-- [ ] Upload Funktion
+- [ ] Anmelde Form stylen
+- [x] Upload Funktion ↓
+- [ ] Upload Funktion mit User Abfrage, damit nur eingeloggte User hochladen können
 - [ ] Suchleiste + Backend für Suche
-- [ ] Like Button
+- [ ] Like Button mit User Abfrage
 - [ ] Bilder in Datenbank, API um Bilder zu skalieren, dann direkt laden
 - [ ] Kommentare zu Code hinzufügen
-- [ ] README.md
+- [x] README.md

@@ -1,9 +1,11 @@
 package com.example.demo;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.context.annotation.Bean;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.MediaType;
 import org.springframework.http.ResponseEntity;
+import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.ui.ModelMap;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.multipart.MultipartFile;
@@ -53,7 +55,7 @@ public class HelloController {
         if (user == null) {
             user = repository.findByEmail(userData.getUserNameOrEmail());
         }
-        if( user.getPassword().equals(userData.getPassword())) {
+        if(passwordEncoder.matches(userData.getPassword(),user.getPassword())) {
             return new ResponseEntity<>(HttpStatus.OK);
         }
         else {
@@ -61,12 +63,15 @@ public class HelloController {
         }
     }
 
+    @Autowired
+    private PasswordEncoder passwordEncoder;
     @PostMapping(
             path = "/api/user/register",
             consumes = {MediaType.APPLICATION_JSON_VALUE}
     )
     public ResponseEntity register(@RequestBody RegisterUserDTO userData) throws Exception {
-        User regUser = new User(userData.getEmail(), userData.getUserName(), userData.getPassword());
+        String hashedPw = passwordEncoder.encode(userData.getPassword());
+        User regUser = new User(userData.getEmail(), userData.getUserName(), hashedPw);
         User userFoundByName = repository.findByUserName(regUser.getUserName());
         User userFoundByEmail = repository.findByEmail(regUser.getEmail());
         if (userFoundByName == null && userFoundByEmail == null) {

@@ -1,0 +1,101 @@
+.flex-box {
+    width: 200px;
+    height: 200px;
+    display: flex;
+}
+
+.container {
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    gap: 10px;
+    margin-top: 5px;
+
+}
+.image {
+   max-width: 100%;
+    max-height: 100%;
+    margin: auto;
+}
+
+.navbar-brand {
+    margin-left: 10px;
+    margin-right: auto;
+    align-self: flex-start;
+    border: 1px black;
+    color: azure;
+}
+.navbar-brand:hover {
+    color: darkgrey;
+}
+.navbar{
+    display: flex;
+    justify-content: flex-end;
+    width: 100%;
+    background-color: #3e3e3e;
+}
+
+.button, .refresh-button{
+    display: inline-block;
+    text-align: center;
+    height: 35px;
+    padding: 0 10px;
+    margin-right: 10px;
+    border-radius: 3px;
+    border: 1px ;
+    background-color: #373737;
+    color: aliceblue;
+}
+.button:hover{
+    color: darkgrey;
+}
+.search-input{
+    margin: 5px;
+    width: 250px;
+    height: 35px;
+    border-radius: 3px;
+    border: 1px ;
+    background-color: #373737;
+    color: aliceblue;
+    text-align: left;
+    padding-left: 10px;
+}
+.top{
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+.lower{
+    width: auto;
+    display: flex;
+    justify-content: flex-end;
+    align-items: baseline;
+}
+
+@media screen and (min-width: 600px) {
+    body{
+        background-color: aliceblue;
+    }
+
+    .navbar{
+        flex-direction: row;
+        flex-wrap: nowrap;
+    }
+
+}
+@media screen and (max-width: 599px) {
+    body {
+        background-color: #373737;
+    }
+
+    .navbar{
+        flex-wrap: wrap;
+    }
+    .search-input{
+        width: 100%;
+    }
+    .submit-button{
+
+    }
+}

@@ -6,14 +6,20 @@
 </head>
 <body>
     <div class="form">
-        <div class="form-item">
+        <div>
             <input class="search-input" id="email" placeholder="email">
         </div>
-        <div class="form-item">
+        <div>
             <input type="password" class="search-input" id="password" placeholder="password">
         </div>
-        <div class="form-item">
+        <div>
             <button type="submit" onclick="login()" class="button">Submit</button>
+        </div>
+        <div>
+            <a>If you don't already have an account, press the button below to register.</a>
+        </div>
+        <div>
+            <button class="button" onclick="window.location.href='http://localhost:9000/register.html'">Register</button>
         </div>
     </div>
 </body>

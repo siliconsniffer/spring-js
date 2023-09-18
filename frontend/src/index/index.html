@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>LibreGram</title>
+    <link rel="icon" type="image/png" href="../../assets/icons8-solarpaneel-64.png">
+  </head>
+    <body>
+        <nav class="navbar">
+            <div class="top">
+                <a class="navbar-brand" href="/">Test</a>
+                <!-- Button to refresh the Image Board. -->
+                <button id="RefreshBtn" type="button" class="button" onclick="refresh()"> refresh </button>
+                <button id="Login" type="button" onclick="window.location.href='http://localhost:9000/login.html'"   class="button">Login</button>
+            </div>
+            <form class="lower">
+                <input type="search" class="search-input" placeholder="Search" aria-label="Search">
+                <button class="button" type="submit">Search</button>
+            </form>
+        </nav>
+        <div id="container" class="container">
+            <div class="flex-box"></div>
+        </div>
+        <form method="POST" action="/api/uploadFile" enctype="multipart/form-data">
+            <table>
+                <tr>
+                    <td><label path="file">Select a file to upload</label></td>
+                    <td><input type="file" name="file" /></td>
+                </tr>
+                <tr>
+                    <td><input type="submit" value="Submit" /></td>
+                </tr>
+            </table>
+            </form>
+    </body>
+</html>
